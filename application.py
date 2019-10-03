@@ -9,20 +9,20 @@ from flask import send_file
 # files = {'media': open('test.jpg', 'rb')}
 # requests.post(url, files=files)
 
-@app.route('/result',methods=['GET','POST'])
+@app.route('/about',methods=['GET'])
 def results():
-	if(request.method=='POST'):
-		pass
+	return jsonify("U are in home page, there is nothing here, go for /post and upload image")
 
 
-@app.route('/post',methods=['POST','GET'])
+@app.route('/post',methods=['GET'])
 def post():
-	print('we are at line 20 ',request.files)
+	# print('we are at line 20 ',request.files)
 	f = request.files['file']
-	print("line 15")
+	# print(f)
 	f.save("image.png")
 	img = Image.open('image.png').convert('LA')
 	img.save('greyscale.png')
+	# return jsonify("Success")
 	return send_file("greyscale.png", mimetype='image/png')
 
 
