@@ -14,7 +14,7 @@ def results():
 	return jsonify("U are in home page, there is nothing here, go for /post and upload image")
 
 
-@app.route('/post',methods=['GET'])
+@app.route('/post',methods=['POST'])
 def post():
 	# print('we are at line 20 ',request.files)
 	f = request.files['file']
